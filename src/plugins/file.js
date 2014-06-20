@@ -115,7 +115,7 @@ angular.module('ngCordova.plugins.file', [])
 
         getFilesystem().then(
           function (filesystem) {
-            filesystem.root.getFile(filePath, {create: false},
+            filesystem.root.getFile(filePath, {create: true},
               function (fileEntry) {
                 fileEntry.createWriter(
                   function (fileWriter) {
