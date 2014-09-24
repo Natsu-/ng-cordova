@@ -140,12 +140,19 @@ angular.module('ngCordova.plugins.file', [])
         getFilesystem().then(
           function (filesystem) {
             filesystem.root.getFile(filePath, {create: false}, function (fileEntry) {
-              fileEntry.remove(function () {
-                q.resolve();
+              fileEntry.remove(function (success) {
+                q.resolve(success);
+              }, function(err) {
+                q.reject(err);
               });
+            }, function(error) {
+              q.reject('FILE_NOT_FOUND : ' + filePath);
             });
           }
         );
+
+        return q.promise;
+      },
 
         return q.promise;
       },
