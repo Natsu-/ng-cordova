@@ -154,9 +154,6 @@ angular.module('ngCordova.plugins.file', [])
         return q.promise;
       },
 
-        return q.promise;
-      },
-
       // options is a dict with possible keys :
       // - append : true/false (if true, append data on EOF)
       writeFile: function (filePath, data, options) {
